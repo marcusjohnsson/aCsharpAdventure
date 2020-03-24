@@ -9,8 +9,6 @@ namespace aCsharpAdventure
             bool exit = false;
             while (exit == false) {
 
-
-
                 /// A Simple switch menu
                 Console.WriteLine("### MENU ###########################################");
                 Console.WriteLine("[1] - An example of a while loop");
@@ -18,6 +16,7 @@ namespace aCsharpAdventure
                 Console.WriteLine("[3] - Only in it for the lolz");
                 Console.WriteLine("[4] - Add or Muliply?");
                 Console.WriteLine("[5] - Crash & Burn");
+                Console.WriteLine("[6] - Guessing Game");
                 Console.WriteLine("Type EXIT to close the application");
 
                 string opt = Console.ReadLine();
@@ -38,19 +37,6 @@ namespace aCsharpAdventure
 
                 switch (menuOption)
                 {
-
-                    //case 1:
-
-                    //    //string confirmExit;
-                    //    //Console.WriteLine("Are you sure you want to exit the app? If so type EXIT:");
-                    //    //confirmExit = Console.ReadLine();
-                    //    //if (confirmExit == "EXIT")
-                    //    //{
-                    //    //    exit = true;
-                    //    //}
-              
-                    //    break;
-
                     case 1:
 
                         whileLoop();
@@ -74,6 +60,11 @@ namespace aCsharpAdventure
                     case 5:
 
                         crashAndBurn();
+                        break;
+
+                    case 6:
+
+                        guessingGame();
                         break;
 
                     default:
@@ -175,7 +166,8 @@ namespace aCsharpAdventure
         {
             Console.WriteLine("----------------------------------------------");
             Console.WriteLine("Ye wanna hear a joke? Y / N");
-            string answer = Console.ReadLine();
+            string v = Console.ReadLine();
+            string answer = v;
             if(answer == "Y")
             {
                 Console.WriteLine(" ");
@@ -278,6 +270,33 @@ namespace aCsharpAdventure
                 Console.WriteLine("Idiot, I said STRING....");
             }
             Console.WriteLine("-------------------------------------");
+        }
+        static void guessingGame()
+        {
+            int randomNumber;
+            Random newRandom = new Random();
+            randomNumber = newRandom.Next(1, 21); // declared two times? 
+            bool isRunning = true;
+            Console.WriteLine("Guess a number between 1 and 20");
+            int guess = Convert.ToInt32(Console.ReadLine());
+            while (isRunning) // ! 
+            {
+                if (guess > randomNumber)
+                {
+                    Console.WriteLine("To hiiiiigh mofo! Guess again!");
+                    guess = Convert.ToInt32(Console.ReadLine()); // guess never changes causing infinity loop
+                }
+                else if (guess < randomNumber)
+                {
+                    Console.WriteLine("To loOow! Guess again!");
+                    guess = Convert.ToInt32(Console.ReadLine());
+                }
+                else if (guess == randomNumber) // assigning = is wrong. == is the correct operator
+                { // no codeblock
+                    Console.WriteLine("Right on the number! You guessed correct! Bye!");
+                    isRunning = false;
+                }
+            }
         }
 
     }
