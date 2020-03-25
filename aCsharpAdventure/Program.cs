@@ -17,6 +17,7 @@ namespace aCsharpAdventure
                 Console.WriteLine("[4] - Add or Muliply?");
                 Console.WriteLine("[5] - Crash & Burn");
                 Console.WriteLine("[6] - Guessing Game");
+                Console.WriteLine("[7] - Add stuff");
                 Console.WriteLine("Type EXIT to close the application");
 
                 string opt = Console.ReadLine();
@@ -65,6 +66,11 @@ namespace aCsharpAdventure
                     case 6:
 
                         guessingGame();
+                        break;
+
+                    case 7:
+
+                        addIt();
                         break;
 
                     default:
@@ -197,7 +203,7 @@ namespace aCsharpAdventure
         }
         static void addOrMultiply()
         {
-            int numbOne, numbTwo, choice, sum, product;
+            int numbOne, numbTwo, operation;
 
             Console.WriteLine("----------------------------------------------");
             Console.WriteLine("Please provide a number:");
@@ -207,23 +213,33 @@ namespace aCsharpAdventure
             Console.WriteLine("Thank you. Please choose an operation:");
             Console.WriteLine("1) - Sum up the numbers:");
             Console.WriteLine("2) - Multiply the numbers:");
-            choice = int.Parse(Console.ReadLine());
-            switch (choice)
+            operation = int.Parse(Console.ReadLine());
+
+
+            int Calculur(int first, int second, int op)
             {
-                case 1:
+                if (op == 1)
+                {
+                    return first + second;
+                }
+                else if (op == 2)
+                {
+                    return first * second;
+                }
+                else
+                {
+                    return 0;
+                }
 
-                    sum = numbOne + numbTwo;
-                    Console.WriteLine("The sum of " + numbOne + " and " + numbTwo + " is " + sum);
-                    break;
-
-                case 2:
-
-                    product = numbOne * numbTwo;
-                    Console.WriteLine("The the of " + numbOne + " and " + numbTwo + " is " + product);
-                    break;
             }
 
+            int answer = Calculur(numbOne, numbTwo, operation);
+
+            Console.WriteLine(answer);
+
         }
+
+       
         static void crashAndBurn()
         {
             // Example of TryParse(String, Int32)
@@ -297,6 +313,21 @@ namespace aCsharpAdventure
                     isRunning = false;
                 }
             }
+        }
+        // adds a bunch of strings together
+        static void addIt()
+        {
+            string addStuff(string input1 = "", string input2 = "", string input3 = "", string input4 = "")
+            {
+                return input1 + " " + input2 + " " + input3 + " " + input4;
+            }
+
+            string first = Console.ReadLine();
+            string second = Console.ReadLine();
+            string third = Console.ReadLine();
+            string fourth = Console.ReadLine();
+           
+            Console.WriteLine(addStuff(first, second, third, fourth));
         }
 
     }
