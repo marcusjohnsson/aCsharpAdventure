@@ -18,6 +18,7 @@ namespace aCsharpAdventure
                 Console.WriteLine("[5] - Crash & Burn");
                 Console.WriteLine("[6] - Guessing Game");
                 Console.WriteLine("[7] - Add stuff");
+                Console.WriteLine("[8] - Add stuff some more");
                 Console.WriteLine("Type EXIT to close the application");
 
                 string opt = Console.ReadLine();
@@ -71,6 +72,11 @@ namespace aCsharpAdventure
                     case 7:
 
                         addIt();
+                        break;
+
+                    case 8:
+
+                        arraySum();
                         break;
 
                     default:
@@ -328,6 +334,31 @@ namespace aCsharpAdventure
             string fourth = Console.ReadLine();
            
             Console.WriteLine(addStuff(first, second, third, fourth));
+        }
+        // adds a bunch of strings together
+        static void arraySum()
+        {
+            const int MAX_SIZE = 5;
+            int[] nums = new int[MAX_SIZE];
+            int i = 0;
+            Console.WriteLine("Provide 5 numbers and will sum them up");
+            while (i < MAX_SIZE)
+            {
+                nums [i] = Convert.ToInt32(Console.ReadLine());
+                i++;
+            }
+            int sum = 0;
+            i = MAX_SIZE -1; // Correcting i as delimiter since i was set to surpas MAX_SIZE by ++ in prior while-loop. 
+            while (i >= 0)
+            {   
+                int atIndex = nums[i];
+                int displayedSum = Convert.ToInt32(sum + atIndex);
+                Console.WriteLine(sum + " + " + atIndex + " = " + displayedSum);
+                sum = sum + atIndex;
+                i = i - 1;
+            }
+            Console.WriteLine("And that adds up to a total of " + sum);
+
         }
 
     }
